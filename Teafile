@@ -1,0 +1,37 @@
+{
+	"scope": "darabonba",
+	"name": "String",
+	"version": "0.0.1",
+	"main": "./main.tea",
+	"releases": {
+		"go": "github.com/alibabacloud-go/darabonba-string/service:v1.0.0",
+		"ts": "@alicloud/darabonba-string:^1.0.0",
+		"csharp": "AlibabaCloud.DarabonbaString:1.0.0",
+		"java": "com.aliyun:darabonba-string:0.0.1",
+		"php": "alibabacloud/darabonba-string:^0.1.0",
+		"python": "alibabacloud_darabonba_string:0.0.1"
+	},
+	"java": {
+		"package": "com.aliyun.darabonbastring"
+	},
+	"csharp": {
+		"namespace": "AlibabaCloud.DarabonbaString",
+		"className": "StringUtil",
+		"packageInfo": {
+			"name": "stringUtil"
+		}
+	},
+	"php": {
+		"package": "AlibabaCloud.Darabonba.String",
+		"clientName": "StringUtil",
+		"packageInfo": {
+			"name": "alibabacloud/darabonba-string",
+			"desc": "Alibaba Cloud Darabonba String Library for PHP",
+			"github": "https://github.com/aliyun/darabonba-string"
+		}
+	},
+	"python": {
+		"package": "alibabacloud_darabonba_string",
+		"clientName": "client"
+	}
+}
