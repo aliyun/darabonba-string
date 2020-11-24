@@ -1,7 +1,7 @@
 {
 	"scope": "darabonba",
 	"name": "String",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"main": "./main.tea",
 	"releases": {
 		"go": "github.com/alibabacloud-go/darabonba-string/service:v1.0.0",
@@ -33,5 +33,13 @@
 	"python": {
 		"package": "alibabacloud_darabonba_string",
 		"clientName": "client"
-	}
+	},
+  "cpp": {
+    "packageInfo": {
+      "git": {
+        "scope": "alibabacloud-sdk-cpp",
+        "project": "dara-string"
+      }
+    }
+  }
 }
