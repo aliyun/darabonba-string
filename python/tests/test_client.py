@@ -52,6 +52,7 @@ class TestClient(unittest.TestCase):
     def test_index(self):
         self.assertEqual(3, Client.index('py|js|go|c|java', 'js'))
         self.assertEqual(11, Client.index('py|js|go|c|java', 'java'))
+        self.assertEqual(-1, Client.index('py|js|go|c|java', 'php'))
 
     def test_to_lower(self):
         self.assertEqual('python', Client.to_lower('PYTHON'))

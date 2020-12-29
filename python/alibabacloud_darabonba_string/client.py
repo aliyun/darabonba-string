@@ -32,7 +32,10 @@ class Client(object):
 
     @staticmethod
     def index(s, sub_str):
-        return s.index(sub_str)
+        try:
+            return s.index(sub_str)
+        except ValueError:
+            return -1
 
     @staticmethod
     def to_lower(s):
