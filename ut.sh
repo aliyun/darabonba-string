@@ -73,17 +73,23 @@ function run_ts {
 }
 
 function run_python {
-  #env
-  export PYTHONPATH=$PYTHONPATH:`pwd`/python
-  echo $PYTHONPATH 
   # install
   cd python || return 126
   pip install coverage
-  pip install alibabacloud-tea
 
   coverage run --source="./alibabacloud_tea_util" -m pytest tests/test_* || return 126
   cd ../
   upload_codecov_report python python
+}
+
+function run_python2 {
+  # install
+  cd python2 || return 126
+  pip install coverage
+
+  coverage run --source="./alibabacloud_tea_util" -m pytest tests/ || return 126
+  cd ../
+  upload_codecov_report python2 python2
 }
 
 function run_cpp {
@@ -122,6 +128,10 @@ elif [ "$lang" == "python" ]
 then
   echo "run python"
   run_python
+elif [ "$lang" == "python2" ]
+then
+  echo "run python2"
+  run_python2
 elif [ "$lang" == "ts" ]
 then
   echo "run ts"
