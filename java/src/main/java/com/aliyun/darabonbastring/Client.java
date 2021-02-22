@@ -53,6 +53,9 @@ public class Client {
     }
 
     public static String subString(String s, Integer start, Integer end) {
+        if(end < 0) {
+            end = s.length() + end;
+        }
         return s.substring(start, end);
     }
 }
