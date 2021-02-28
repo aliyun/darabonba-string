@@ -67,5 +67,7 @@ public class ClientTest {
     @Test
     public void subString() {
         Assert.assertEquals("b", Client.subString("abc", 1, 2));
+        Assert.assertEquals("ab", Client.subString("abc", 0, -1));
+        Assert.assertEquals("", Client.subString("", 0, -1));
     }
 }

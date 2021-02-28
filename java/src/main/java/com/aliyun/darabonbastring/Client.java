@@ -56,6 +56,9 @@ public class Client {
         if(end < 0) {
             end = s.length() + end;
         }
+        if(end <= 0) {
+            return "";
+        }
         return s.substring(start, end);
     }
 }
