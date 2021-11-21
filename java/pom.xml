@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.aliyun</groupId>
     <artifactId>darabonba-string</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <packaging>jar</packaging>
     <name>darabonba-string</name>
     <description>
@@ -50,7 +50,7 @@
         <dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>tea</artifactId>
-            <version>[1.0.3, 2.0.0)</version>
+            <version>[1.1.4, 2.0.0)</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
