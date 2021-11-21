@@ -54,4 +54,8 @@ export default class Client {
   static subString(s: string, strat: number, end: number): string {
     return s.slice(strat, end);
   }
+
+  static equals(expect: string, actual: string): boolean {
+    return expect === actual;
+  }
 }

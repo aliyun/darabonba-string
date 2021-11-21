@@ -24,6 +24,7 @@ public:
   static string toUpper(shared_ptr<string> s);
   static string subString(shared_ptr<string> s, shared_ptr<int> start,
                           shared_ptr<int> end);
+  static bool equals(shared_ptr<string> expect, shared_ptr<string> actual);
 
   Client(){};
 };

@@ -48,3 +48,7 @@ class Client(object):
     @staticmethod
     def sub_string(s, start, end):
         return s[start:end]
+
+    @staticmethod
+    def equals(expect, actual):
+        return expect == actual

@@ -58,3 +58,7 @@ func SubString(s *string, start, end *int) (_result *string) {
 	}
 	return tea.String(str[startIndex:endIndex])
 }
+
+func Equals(expect *string, actual *string) (_result *bool) {
+	return tea.Bool(tea.StringValue(expect) == tea.StringValue(actual))
+}

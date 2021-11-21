@@ -151,4 +151,9 @@ class StringUtil
     {
         return null === $value ? $default : $value;
     }
+
+    public static function equals($expect, $actual)
+    {
+        return false !== strcmp(self::_value($expect), self::_value($actual));
+    }
 }

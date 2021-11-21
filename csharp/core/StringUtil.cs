@@ -151,5 +151,14 @@ namespace AlibabaCloud.DarabonbaString
             return s.Substring(start.Value, length);
         }
 
+        public static bool? Equals(string expect, string actual)
+        {
+            if(expect == null)
+            {
+                return false;
+            }
+            return expect.Equals(actual);
+        }
+
     }
 }

@@ -61,6 +61,10 @@ public class Client {
         }
         return s.substring(start, end);
     }
+
+    public static Boolean equals(String expect, String actual) {
+        return expect.equals(actual);
+    }
 }
 
 

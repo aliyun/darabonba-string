@@ -116,3 +116,13 @@ string Darabonba_String::Client::subString(shared_ptr<string> s,
     return s->substr(*start, *end - *start);
   }
 }
+
+bool Darabonba_String::Client::equals(shared_ptr<string> expect,
+                                        shared_ptr<string> actual) {
+  if (expect && substr) {
+    if (expect == substr) {
+      return true;
+    }
+  }
+  return false;
+}
