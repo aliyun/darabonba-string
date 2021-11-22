@@ -4,8 +4,8 @@
 	"version": "0.0.8",
 	"main": "./main.tea",
 	"releases": {
-		"go": "github.com/alibabacloud-go/darabonba-string/client:v1.0.0",
-		"ts": "@alicloud/darabonba-string:^1.0.0",
+		"go": "github.com/alibabacloud-go/darabonba-string/client:v1.0.1",
+		"ts": "@alicloud/darabonba-string:^1.0.1",
 		"csharp": "AlibabaCloud.DarabonbaString:1.0.0",
 		"java": "com.aliyun:darabonba-string:0.0.4",
 		"php": "alibabacloud/darabonba-string:^0.1.0",
