@@ -23,3 +23,14 @@ static function toUpper(s: string): string;
 static function subString(s: string, start: integer, end: integer): string;
 
 static function equals(expect: string, actual: string): boolean;
+
+static function replaceAll(raw: string, oldStr: string, newStr: string): string;
+
+static function trim(raw: string): string;
+
+/**
+ * @param raw string
+ * @param encoding string, eg: UTF-8
+ * @return result bytes
+ */
+static function toBytes(raw: string, encoding: string): bytes;
