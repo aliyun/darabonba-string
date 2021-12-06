@@ -1,7 +1,7 @@
 {
 	"scope": "darabonba",
 	"name": "String",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"main": "./main.tea",
 	"releases": {
 		"go": "github.com/alibabacloud-go/darabonba-string/client:v1.0.1",
@@ -9,8 +9,8 @@
 		"csharp": "AlibabaCloud.DarabonbaString:1.0.0",
 		"java": "com.aliyun:darabonba-string:0.0.4",
 		"php": "alibabacloud/darabonba-string:^0.1.0",
-		"python": "alibabacloud_darabonba_string:0.0.1",
-    "python2": "alibabacloud_darabonba_string_py2:0.0.1"
+		"python": "alibabacloud_darabonba_string:0.0.3",
+		"python2": "alibabacloud_darabonba_string_py2:0.0.3"
 	},
 	"java": {
 		"package": "com.aliyun.darabonbastring"
@@ -33,11 +33,25 @@
 	},
 	"python": {
 		"package": "alibabacloud_darabonba_string",
-		"clientName": "client"
+		"clientName": "client",
+		"packageInfo": {
+			"name": "alibabacloud_darabonba_string",
+			"desc": "Alibaba Cloud Darabonba String SDK Library for Python",
+			"github": "https://github.com/aliyun/darabonba-string",
+			"author": "Alibaba Cloud SDK",
+			"email": "sdk-team@alibabacloud.com"
+		}
 	},
 	"python2": {
 		"package": "alibabacloud_darabonba_string",
-		"clientName": "client"
+		"clientName": "client",
+		"packageInfo": {
+			"name": "alibabacloud_darabonba_string_py2",
+			"desc": "Alibaba Cloud Darabonba String SDK Library for Python2",
+			"github": "https://github.com/aliyun/darabonba-string",
+			"author": "Alibaba Cloud SDK",
+			"email": "sdk-team@alibabacloud.com"
+		}
 	},
 	"cpp": {
 		"packageInfo": {
