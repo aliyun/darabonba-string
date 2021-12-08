@@ -64,7 +64,7 @@ namespace AlibabaCloud.DarabonbaString
             return result;
         }
 
-        public static bool? Contains(string s, string substr)
+        public static bool Contains(string s, string substr)
         {
             if(s == null)
             {
@@ -73,7 +73,7 @@ namespace AlibabaCloud.DarabonbaString
             return s.Contains(substr);
         }
 
-        public static int? Count(string s, string substr)
+        public static int Count(string s, string substr)
         {
             if(s == null)
             {
@@ -87,7 +87,7 @@ namespace AlibabaCloud.DarabonbaString
             return rawSplit.Length - 1;
         }
 
-        public static bool? HasPrefix(string s, string prefix)
+        public static bool HasPrefix(string s, string prefix)
         {
             if(s == null)
             {
@@ -96,7 +96,7 @@ namespace AlibabaCloud.DarabonbaString
             return s.StartsWith(prefix);
         }
 
-        public static bool? HasSuffix(string s, string substr)
+        public static bool HasSuffix(string s, string substr)
         {
             if (s == null)
             {
@@ -105,7 +105,7 @@ namespace AlibabaCloud.DarabonbaString
             return s.EndsWith(substr);
         }
 
-        public static int? Index(string s, string substr)
+        public static int Index(string s, string substr)
         {
             if (s == null)
             {
@@ -151,7 +151,7 @@ namespace AlibabaCloud.DarabonbaString
             return s.Substring(start.Value, length);
         }
 
-        public static bool? Equals(string expect, string actual)
+        public static bool Equals(string expect, string actual)
         {
             if(expect == null)
             {
