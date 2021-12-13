@@ -15,18 +15,23 @@ namespace tests
             Assert.Equal(new List<string> { "aa", "bb" }, StringUtil.Split("aa.bb", ".", null));
 
             Assert.Equal(new List<string> { "aa", "bb.cc" }, StringUtil.Split("aa.bb.cc", ".", 2));
+
+            Assert.Equal(new List<string> { "/test", "path=1&name=2" }, StringUtil.Split("/test?path=1&name=2", "?", null));
+
+            Assert.Equal(new List<string> { "/test", "path=1&name=2" }, StringUtil.Split("/test?path=1&name=2", "?", -1));
         }
 
         [Fact]
         public void Test_Replace()
         {
             Assert.Null(StringUtil.Replace(null, "bb", "ff"));
-            Assert.Equal("aaffccddffee", StringUtil.Replace("aabbccddbbee", "bb", "ff"));
-            Assert.Equal("aabbccddffee", StringUtil.Replace("aabbccddbbee", "bb", "ff", 1));
-            Assert.Equal("aabbccddbbee", StringUtil.Replace("aabbccddbbee", "bb", "ff", 2));
-            Assert.Equal("ffbbccddbbee", StringUtil.Replace("aabbccddbbee", "aa", "ff", 0));
-            Assert.Equal("aabbccddbbff", StringUtil.Replace("aabbccddbbee", "ee", "ff", 0));
-            Assert.Equal("aaffbbcc", StringUtil.Replace("aaaabbcc", "aa", "ff", 1));
+            Assert.Equal("aaffffccddbbee", StringUtil.Replace("aabbccddbbee", "b", "ff", 2));
+            Assert.Equal("aabbccddbbee", StringUtil.Replace("aabbccddbbee", "aa", "ff", 0));
+            Assert.Equal("aaffccddffee", StringUtil.Replace("aabbccddbbee", "bb", "ff", -1));
+            Assert.Equal("ffaabbcc", StringUtil.Replace("aaaabbcc", "aa", "ff", 1));
+            Assert.Equal("/test+path=1&name=2", StringUtil.Replace("/test?path=1&name=2", "?", "+", 1));
+            Assert.Equal("/test+path+name", StringUtil.Replace("/test?path?name", "?", "+", null));
+            Assert.Equal("/test+path+name", StringUtil.Replace("/test?path?name", "?", "+", -1));
         }
 
         [Fact]
@@ -92,6 +97,26 @@ namespace tests
             Assert.Equal("est", StringUtil.SubString("test", 1, 3));
             Assert.Equal("est", StringUtil.SubString("test", 1, 4));
             Assert.Equal("", StringUtil.SubString("test", 3, 0));
+        }
+
+        [Fact]
+        public void Test_Equals()
+        {
+            Assert.Equal(true, StringUtil.Equals("abc", "abc"));
+            Assert.Equal(false, StringUtil.Equals("abc", "ab"));
+        }
+
+        [Fact]
+        public void Test_Trim()
+        {
+            Assert.Equal("abc", StringUtil.Trim("  abc   "));
+            Assert.Equal("abc", StringUtil.Trim("\t\nabc\t\t\t\n"));
+        }
+
+        [Fact]
+        public void Test_ToBytes()
+        {
+            Assert.Equal(49, StringUtil.ToBytes("123", "utf-8")[0]);
         }
     }
 }

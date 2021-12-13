@@ -25,7 +25,7 @@ namespace AlibabaCloud.DarabonbaString
                 return null;
             }
 
-            if(limit == null)
+            if(limit == null || limit == -1)
             {
                 return new List<string>(raw.Split(new string[] { sep }, StringSplitOptions.None));
             }
@@ -34,34 +34,20 @@ namespace AlibabaCloud.DarabonbaString
             
         }
 
-        public static string Replace(string raw, string oldStr, string newStr, int? index = null)
+        public static string Replace(string raw, string oldStr, string newStr, int? count = null)
         {
             if(raw == null)
             {
                 return null;
             }
 
-            if(index == null)
+            if(count == null || count == -1)
             {
                 return raw.Replace(oldStr, newStr);
             }
 
-            string result = string.Empty;
-
-            string[] rawSplit = raw.Split(new string[] { oldStr }, StringSplitOptions.None);
-
-            if(rawSplit.Length <= index.Value + 1 )
-            {
-                return raw;
-            }
-
-            List<string> rawList = new List<string>(rawSplit);
-            string left = string.Join(oldStr, rawList.GetRange(0, index.Value + 1));
-            string right = string.Join(oldStr, rawList.GetRange(index.Value + 1, rawList.Count - index.Value - 1));
-
-            result = left + newStr + right;
-
-            return result;
+            string[] rawSplit = raw.Split(new string[] { oldStr }, count.Value + 1, StringSplitOptions.None);
+            return string.Join(newStr, rawSplit);
         }
 
         public static bool Contains(string s, string substr)
@@ -158,6 +144,26 @@ namespace AlibabaCloud.DarabonbaString
                 return false;
             }
             return expect.Equals(actual);
+        }
+
+        public static string Trim(string raw)
+        {
+            return raw.Trim();
+        }
+
+        public static byte[] ToBytes(string raw, string encoding)
+        {
+            switch (encoding.ToLower())
+            {
+                case "utf-8":
+                    return System.Text.Encoding.UTF8.GetBytes(raw);
+                case "unicode":
+                    return System.Text.Encoding.Unicode.GetBytes(raw);
+                case "ascii":
+                    return System.Text.Encoding.ASCII.GetBytes(raw);
+                default:
+                    return System.Text.Encoding.UTF8.GetBytes(raw);
+            }
         }
 
     }
