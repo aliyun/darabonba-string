@@ -52,3 +52,11 @@ class Client(object):
     @staticmethod
     def equals(expect, actual):
         return expect == actual
+
+    @staticmethod
+    def trim(raw):
+        return raw.strip()
+
+    @staticmethod
+    def to_bytes(raw, encoding):
+        return raw.encode(encoding)

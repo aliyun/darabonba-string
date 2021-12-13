@@ -13,15 +13,24 @@ public class ClientTest {
     public void splitTest() {
         List<String> list = Client.split("aabbccddbbee", "b", 4);
         Assert.assertEquals(4, list.size());
+        String str = "?";
+        String pathname = "/test?path=1&name=2";
+        java.util.List<String> paths = Client.split(pathname, str, null);
+        Assert.assertEquals(2, paths.size());
+        paths = Client.split(pathname, str, -1);
+        Assert.assertEquals(2, paths.size());
     }
 
     @Test
     public void replaceTest() {
-        Assert.assertEquals("a*a*bb*c*c*d*d*ff*e*e", Client.replace("a*a*bb*c*c*d*d*bb*e*e", "bb", "ff", 1));
-        Assert.assertEquals("aabbccddbbee", Client.replace("aabbccddbbee", "b", "ff", 2));
-        Assert.assertEquals("ffbbccddbbee", Client.replace("aabbccddbbee", "aa", "ff", 0));
-        Assert.assertEquals("aabbccddbbff", Client.replace("aabbccddbbee", "ee", "ff", 0));
-        Assert.assertEquals("aaffbbcc", Client.replace("aaaabbcc", "aa", "ff", 1));
+        Assert.assertEquals("a*a*ff*c*c*d*d*bb*e*e", Client.replace("a*a*bb*c*c*d*d*bb*e*e", "bb", "ff", 1));
+        Assert.assertEquals("aaffffccddbbee", Client.replace("aabbccddbbee", "b", "ff", 2));
+        Assert.assertEquals("aabbccddbbee", Client.replace("aabbccddbbee", "aa", "ff", 0));
+        Assert.assertEquals("aaffccddffee", Client.replace("aabbccddbbee", "bb", "ff", -1));
+        Assert.assertEquals("ffaabbcc", Client.replace("aaaabbcc", "aa", "ff", 1));
+        Assert.assertEquals("/test+path=1&name=2", Client.replace("/test?path=1&name=2", "?", "+", 1));
+        Assert.assertEquals("/test+path+name", Client.replace("/test?path?name", "?", "+", null));
+        Assert.assertEquals("/test+path+name", Client.replace("/test?path?name", "?", "+", -1));
     }
 
     @Test
@@ -69,5 +78,22 @@ public class ClientTest {
         Assert.assertEquals("b", Client.subString("abc", 1, 2));
         Assert.assertEquals("ab", Client.subString("abc", 0, -1));
         Assert.assertEquals("", Client.subString("", 0, -1));
+    }
+
+    @Test
+    public void equalsTest() {
+        Assert.assertEquals(true, Client.equals("abc", "abc"));
+        Assert.assertEquals(false, Client.equals("abc", "ab"));
+    }
+
+    @Test
+    public void trimTest() {
+        Assert.assertEquals("b", Client.trim(" b    "));
+        Assert.assertEquals("b", Client.trim("\t\nb\t\t\t\n"));
+    }
+
+    @Test
+    public void toBytesTest() {
+        Assert.assertEquals(49, Client.toBytes("123", "utf-8")[0]);
     }
 }

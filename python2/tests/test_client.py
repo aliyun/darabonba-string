@@ -11,8 +11,10 @@ class TestClient(unittest.TestCase):
         expected = ['py', 'js', 'go|c|java']
         self.assertEqual(expected, Client.split('py|js|go|c|java', '|', 2))
 
-        expected = ['py', 'js', 'go', 'c', 'java']
-        self.assertEqual(expected, Client.split('py|js|go|c|java', '|', 15))
+        expected = ['/test', 'path=1&name=2']
+        self.assertEqual(expected, Client.split('/test?path=1&name=2', '?', 2))
+
+        self.assertEqual(3, len(Client.split('/test?path?name', '?', None)))
 
     def test_replace(self):
         expected = 'py/js/go/c/java'
@@ -35,6 +37,12 @@ class TestClient(unittest.TestCase):
 
         expected = 'py/js/go/c/java'
         self.assertEqual(expected, Client.replace('py|js|go|c|java', '|', '/', 5))
+
+        expected = '/test+path=1&name=2'
+        self.assertEqual(expected, Client.replace('/test?path=1&name=2', '?', '+', 1))
+
+        expected = '/test+path+name'
+        self.assertEqual(expected, Client.replace('/test?path?name', '?', '+', -1))
 
     def test_contains(self):
         self.assertTrue(Client.contains('py|js|go|c|java', 'java'))
@@ -68,3 +76,14 @@ class TestClient(unittest.TestCase):
     def test_sub_string(self):
         self.assertEqual('py|', Client.sub_string('py|js|go|c|java', 0, 3))
         self.assertEqual('js|go|', Client.sub_string('py|js|go|c|java', 3, 9))
+
+    def test_equals(self):
+        self.assertEqual(True, Client.equals('python', 'python'))
+        self.assertEqual(False, Client.equals('python', 'py'))
+
+    def test_trim(self):
+        self.assertEqual('python', Client.trim('   python     '))
+        self.assertEqual('python', Client.trim('\t\npython\t\t\t\n'))
+
+    def test_to_bytes(self):
+        self.assertEqual(b'abc', Client.to_bytes('abc', 'utf-8'))
