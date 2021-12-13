@@ -156,4 +156,19 @@ class StringUtil
     {
         return false !== strcmp(self::_value($expect), self::_value($actual));
     }
+
+    public static function trim($str)
+    {
+        return trim($str);
+    }
+
+    public static function toBytes($str)
+    {
+        $bytes = [];
+        for ($i = 0; $i < \strlen($str); ++$i) {
+            $bytes[] = \ord($str[$i]);
+        }
+
+        return $bytes;
+    }
 }
