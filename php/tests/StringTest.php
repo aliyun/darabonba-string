@@ -16,6 +16,7 @@ class StringTest extends TestCase
         $this->assertEquals([], StringUtil::split(null, '.', null));
         $this->assertEquals(['a', 'b'], StringUtil::split('a.b', '.', null));
         $this->assertEquals(['a', 'b.c'], StringUtil::split('a.b.c', '.', 2));
+        $this->assertEquals(['a', 'b?c'], StringUtil::split('a?b?c', '?', 2));
     }
 
     public function testReplace()
@@ -84,5 +85,18 @@ class StringTest extends TestCase
         $this->assertEquals('est', StringUtil::subString('Test', 1, 3));
         $this->assertEquals('Test', StringUtil::subString('Test', 0, 4));
         $this->assertEquals('', StringUtil::subString('Test', 5, 1));
+    }
+
+    public function testTrim()
+    {
+        $this->assertEquals('Test', StringUtil::trim('Test '));
+        $this->assertEquals('Test', StringUtil::trim(' Test'));
+    }
+
+    public function testToBytes()
+    {
+        $this->assertEquals([
+            115, 116, 114, 105, 110, 103,
+        ], StringUtil::toBytes('string'));
     }
 }
