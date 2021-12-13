@@ -11,13 +11,16 @@ import (
 )
 
 func Split(raw *string, sep *string, limit *int) (_result []*string) {
-	if limit == nil || tea.IntValue(limit) == -1 {
+	if limit == nil || tea.IntValue(limit) == -1 || tea.IntValue(limit) == 0 {
 		return tea.StringSlice(strings.Split(tea.StringValue(raw), tea.StringValue(sep)))
 	}
 	return tea.StringSlice(strings.SplitN(tea.StringValue(raw), tea.StringValue(sep), tea.IntValue(limit)))
 }
 
 func Replace(raw *string, oldStr *string, newStr *string, count *int) (_result *string) {
+	if count == nil {
+		return tea.String(strings.ReplaceAll(tea.StringValue(raw), tea.StringValue(oldStr), tea.StringValue(newStr)))
+	}
 	return tea.String(strings.Replace(tea.StringValue(raw), tea.StringValue(oldStr), tea.StringValue(newStr), tea.IntValue(count)))
 }
 
@@ -61,4 +64,12 @@ func SubString(s *string, start, end *int) (_result *string) {
 
 func Equals(expect *string, actual *string) (_result *bool) {
 	return tea.Bool(tea.StringValue(expect) == tea.StringValue(actual))
+}
+
+func ToBytes(s *string, sep *string) []byte {
+	return []byte(tea.StringValue(s))
+}
+
+func Trim(s *string) *string {
+	return tea.String(strings.Trim(tea.StringValue(s), " "))
 }

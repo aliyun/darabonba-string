@@ -13,7 +13,8 @@ func Test_Split(t *testing.T) {
 	utils.AssertEqual(t, tea.StringValue(strs[0]), "ab")
 	utils.AssertEqual(t, tea.StringValue(strs[1]), "d")
 	utils.AssertEqual(t, tea.StringValue(strs[2]), "a")
-
+	strs = Split(tea.String("/test?path=1&name=2"), tea.String("?"), nil)
+	utils.AssertEqual(t, []string{"/test", "path=1&name=2"}, tea.StringSliceValue(strs))
 	strs = Split(tea.String("abcdca"), tea.String("c"), tea.Int(2))
 	utils.AssertEqual(t, len(strs), 2)
 	utils.AssertEqual(t, tea.StringValue(strs[0]), "ab")
@@ -23,7 +24,8 @@ func Test_Split(t *testing.T) {
 func Test_Replace(t *testing.T) {
 	tmp := Replace(tea.String("ab d e f"), tea.String(" "), tea.String("c"), tea.Int(1))
 	utils.AssertEqual(t, tea.StringValue(tmp), "abcd e f")
-
+	tmp = Replace(tea.String("a*a*ff*c*c*d*d*bb*e*e"), tea.String("ff"), tea.String("bb"), nil)
+	utils.AssertEqual(t, "a*a*bb*c*c*d*d*bb*e*e", tea.StringValue(tmp))
 	tmp = Replace(tea.String("ab d e f"), tea.String(" "), tea.String("c"), tea.Int(5))
 	utils.AssertEqual(t, tea.StringValue(tmp), "abcdcecf")
 }
@@ -69,4 +71,14 @@ func Test_SubString(t *testing.T) {
 
 	tmp = SubString(tea.String("abcd"), tea.Int(0), tea.Int(-1))
 	utils.AssertEqual(t, tea.StringValue(tmp), "abc")
+}
+
+func TestToBytes(t *testing.T) {
+	res := ToBytes(tea.String("123"), nil)
+	utils.AssertEqual(t, []byte{49, 50, 51}, res)
+}
+
+func TestTrim(t *testing.T) {
+	res := Trim(tea.String(" b    "))
+	utils.AssertEqual(t, "b", tea.StringValue(res))
 }
