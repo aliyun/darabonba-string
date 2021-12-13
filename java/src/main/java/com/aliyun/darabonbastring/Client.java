@@ -1,25 +1,30 @@
 package com.aliyun.darabonbastring;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 public class Client {
 
     public static java.util.List<String> split(String raw, String sep, Integer limit) {
-        return Arrays.asList(raw.split(sep, limit));
+        if (limit == null) {
+            return Arrays.asList(raw.split(Pattern.quote(sep)));
+        }
+        return Arrays.asList(raw.split(Pattern.quote(sep), limit));
     }
 
-    public static String replace(String raw, String oldStr, String newStr, Integer index) {
-        int times = -1;
-        int newStrLength = newStr.length();
-        int stringIndex = -newStrLength;
-        while (times < index) {
-            stringIndex = raw.indexOf(oldStr, stringIndex + newStrLength);
-            times++;
+    public static String replace(String raw, String oldStr, String newStr, Integer count) {
+        if (count == null) {
+            return raw.replaceAll(Pattern.quote(oldStr), newStr);
         }
-        if (stringIndex > -1) {
-            String needRepace = raw.substring(stringIndex);
-            String replaceStr = needRepace.replace(oldStr, newStr);
-            return raw.replace(needRepace, replaceStr);
+        String[] array = raw.split(Pattern.quote(oldStr), count + 1);
+        StringBuilder sb = new StringBuilder();
+        if (array.length > 0) {
+            sb.append(array[0]);
+            for (int i = 1; i < array.length; i++) {
+                sb.append(newStr).append(array[i]);
+            }
+            return sb.toString();
         }
         return raw;
     }
@@ -53,10 +58,10 @@ public class Client {
     }
 
     public static String subString(String s, Integer start, Integer end) {
-        if(end < 0) {
+        if (end < 0) {
             end = s.length() + end;
         }
-        if(end <= 0) {
+        if (end <= 0) {
             return "";
         }
         return s.substring(start, end);
@@ -64,6 +69,18 @@ public class Client {
 
     public static Boolean equals(String expect, String actual) {
         return expect.equals(actual);
+    }
+
+    public static String trim(String raw) {
+        return raw.trim();
+    }
+
+    public static byte[] toBytes(String raw, String encoding) {
+        try {
+            return raw.getBytes(encoding);
+        } catch (UnsupportedEncodingException e) {
+            throw new IllegalArgumentException("encoding is not valid");
+        }
     }
 }
 
