@@ -7,12 +7,17 @@
 export default class Client {
 
   static split(raw: string, sep: string, limit: number): string[] {
-    return raw.split(sep, limit);
+    if (null === limit || typeof (limit) === 'undefined' || limit < 1) {
+      return raw.split(sep);
+    }
+    let result = raw.split(sep, limit)
+    result[limit - 1] = [result[limit - 1], ...raw.split(sep).splice(limit)].join(sep)
+    return result;
   }
 
   static replace(raw: string, oldStr: string, newStr: string, count: number = null): string {
-    if (null === count || typeof(count) === 'undefined' || count < 0) {
-        return raw.split(oldStr).join(newStr);
+    if (null === count || typeof (count) === 'undefined' || count < 0) {
+      return raw.split(oldStr).join(newStr);
     }
     let tmp = raw.split(oldStr);
     if (count >= tmp.length - 1) {
@@ -20,7 +25,7 @@ export default class Client {
     }
     let left = tmp.slice(0, count + 1).join(newStr);
     let right = tmp.slice(count + 1).join(oldStr);
-    return left + newStr + right;
+    return left + oldStr + right;
   }
 
   static contains(s: string, substr: string): boolean {
@@ -58,4 +63,14 @@ export default class Client {
   static equals(expect: string, actual: string): boolean {
     return expect === actual;
   }
+
+  static trim(str: string): string {
+    return str.trim();
+  }
+
+  static toBytes(str: string, encoding: BufferEncoding): Buffer {
+    return Buffer.from(str, encoding);
+  }
+
+
 }
