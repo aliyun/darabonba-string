@@ -8,13 +8,15 @@ class TestClient(unittest.TestCase):
         expected = ['py', 'js', 'go', 'c', 'java']
         self.assertEqual(expected, Client.split('py|js|go|c|java', '|', None))
 
-        expected = ['py', 'js', 'go|c|java']
+        expected = ['py', 'js|go|c|java']
         self.assertEqual(expected, Client.split('py|js|go|c|java', '|', 2))
 
         expected = ['/test', 'path=1&name=2']
         self.assertEqual(expected, Client.split('/test?path=1&name=2', '?', 2))
 
         self.assertEqual(3, len(Client.split('/test?path?name', '?', None)))
+
+        self.assertEqual(['/test', 'path?name'], Client.split('/test?path?name', '?', 2))
 
     def test_replace(self):
         expected = 'py/js/go/c/java'

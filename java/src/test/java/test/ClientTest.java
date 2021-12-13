@@ -19,6 +19,11 @@ public class ClientTest {
         Assert.assertEquals(2, paths.size());
         paths = Client.split(pathname, str, -1);
         Assert.assertEquals(2, paths.size());
+        pathname = "/test?path?name";
+        paths = Client.split(pathname, str, 2);
+        Assert.assertEquals("path?name", paths.get(1));
+        paths = Client.split(pathname, str, 0);
+        Assert.assertEquals("path", paths.get(1));
     }
 
     @Test

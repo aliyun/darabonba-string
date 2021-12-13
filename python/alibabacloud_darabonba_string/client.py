@@ -6,9 +6,10 @@ class Client(object):
     """
     This is a string module
     """
+
     @staticmethod
     def split(raw, sep, limit):
-        return raw.split(sep, -1 if limit is None else limit)
+        return raw.split(sep, -1 if limit is None else limit - 1)
 
     @staticmethod
     def replace(raw, old_str, new_str, count):
