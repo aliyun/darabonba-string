@@ -11,7 +11,9 @@ export default class Client {
       return raw.split(sep);
     }
     let result = raw.split(sep, limit)
-    result[limit - 1] = [result[limit - 1], ...raw.split(sep).splice(limit)].join(sep)
+    if (result.length >= limit) {
+      result[limit - 1] = [result[limit - 1], ...raw.split(sep).splice(limit)].join(sep)
+    }
     return result;
   }
 

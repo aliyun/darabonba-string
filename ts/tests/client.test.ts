@@ -20,6 +20,14 @@ describe('Tea Util', function () {
     assert.deepStrictEqual(['/test?path'], result);
     result = client.split('aabbccddbbee', 'b', 4)
     assert.deepStrictEqual(['aa', '', 'ccdd', 'bee'], result);
+    result = client.split('/', '?', 1)
+    assert.deepStrictEqual(['/'], result);
+    result = client.split('/', '?', 2)
+    assert.deepStrictEqual(['/'], result);
+    result = client.split('/?/?/', '?', 1)
+    assert.deepStrictEqual(['/?/?/'], result);
+    result = client.split('/?/?/', '?', 3)
+    assert.deepStrictEqual(['/', '/', '/'], result);
   });
 
   it('replace should ok', function () {
