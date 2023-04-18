@@ -19,11 +19,6 @@ namespace tests
             Assert.Equal(new List<string> { "/test", "path=1&name=2" }, StringUtil.Split("/test?path=1&name=2", "?", null));
 
             Assert.Equal(new List<string> { "/test", "path=1&name=2" }, StringUtil.Split("/test?path=1&name=2", "?", -1));
-<<<<<<< HEAD
-
-            Assert.Equal(new List<string> { "/test", "path?name" }, StringUtil.Split("/test?path?name", "?", 2));
-=======
->>>>>>> 7aba164385eae0b696752cdfe12e5ecdab9f9d6b
         }
 
         [Fact]
@@ -37,6 +32,7 @@ namespace tests
             Assert.Equal("/test+path=1&name=2", StringUtil.Replace("/test?path=1&name=2", "?", "+", 1));
             Assert.Equal("/test+path+name", StringUtil.Replace("/test?path?name", "?", "+", null));
             Assert.Equal("/test+path+name", StringUtil.Replace("/test?path?name", "?", "+", -1));
+            Assert.Equal(new List<string> { "/test", "path?name" }, StringUtil.Split("/test?path?name", "?", 2));
         }
 
         [Fact]
