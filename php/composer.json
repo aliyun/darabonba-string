@@ -8,7 +8,7 @@
     "php": ">5.5"
   },
   "require-dev": {
-    "phpunit/phpunit": "^4.8.35|^5.4.3"
+    "phpunit/phpunit": "*"
   },
   "autoload": {
     "psr-4": {
