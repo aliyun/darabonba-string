@@ -4,5 +4,5 @@ go 1.14
 
 require (
 	github.com/alibabacloud-go/tea v1.1.11
-	golang.org/x/net v0.7.0 // indirect
+	golang.org/x/net v0.17.0 // indirect
 )
