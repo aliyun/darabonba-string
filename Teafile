@@ -1,14 +1,14 @@
 {
 	"scope": "darabonba",
 	"name": "String",
-	"version": "0.0.11",
+	"version": "0.0.12",
 	"main": "./main.tea",
 	"releases": {
 		"go": "github.com/alibabacloud-go/darabonba-string/client:v1.0.2",
 		"ts": "@alicloud/darabonba-string:^1.0.2",
 		"csharp": "AlibabaCloud.DarabonbaString:1.0.3",
 		"java": "com.aliyun:darabonba-string:0.0.5",
-		"php": "alibabacloud/darabonba-string:^0.1.14",
+		"php": "alibabacloud/darabonba-string:^0.1.15",
 		"python": "alibabacloud_darabonba_string:0.0.4",
 		"python2": "alibabacloud_darabonba_string_py2:0.0.4"
 	},
