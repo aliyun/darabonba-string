@@ -154,7 +154,7 @@ class StringUtil
 
     public static function equals($expect, $actual)
     {
-        return false !== strcmp(self::_value($expect), self::_value($actual));
+        return false == strcmp(self::_value($expect), self::_value($actual));
     }
 
     public static function trim($str)
