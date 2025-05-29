@@ -129,7 +129,7 @@ namespace AlibabaCloud.DarabonbaString
                 return s.Substring(start.Value);
             }
 
-            int length = end.Value - start.Value + 1;
+            int length = end.Value - start.Value;
             if(length < 0)
             {
                 return string.Empty;
