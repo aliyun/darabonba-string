@@ -144,7 +144,7 @@ class StringUtil
      */
     public static function subString($s, $start, $end)
     {
-        return substr($s, $start, $end - $start + 1);
+        return substr($s, $start, $end - $start);
     }
 
     private static function _value($value, $default = '')

@@ -81,8 +81,8 @@ class StringTest extends TestCase
 
     public function testSubString()
     {
-        $this->assertEquals('Test', StringUtil::subString('Test', 0, 3));
-        $this->assertEquals('est', StringUtil::subString('Test', 1, 3));
+        $this->assertEquals('Tes', StringUtil::subString('Test', 0, 3));
+        $this->assertEquals('es', StringUtil::subString('Test', 1, 3));
         $this->assertEquals('Test', StringUtil::subString('Test', 0, 4));
         $this->assertEquals('', StringUtil::subString('Test', 5, 1));
     }

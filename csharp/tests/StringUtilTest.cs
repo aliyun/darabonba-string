@@ -94,8 +94,8 @@ namespace tests
         public void Test_SubString()
         {
             Assert.Null(StringUtil.SubString(null, 0, 3));
-            Assert.Equal("test", StringUtil.SubString("test", 0, 3));
-            Assert.Equal("est", StringUtil.SubString("test", 1, 3));
+            Assert.Equal("tes", StringUtil.SubString("test", 0, 3));
+            Assert.Equal("es", StringUtil.SubString("test", 1, 3));
             Assert.Equal("est", StringUtil.SubString("test", 1, 4));
             Assert.Equal("", StringUtil.SubString("test", 3, 0));
         }
